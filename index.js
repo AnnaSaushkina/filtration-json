@@ -44,10 +44,11 @@ const btnPanel = document.querySelector('.btn-panel');
 
 // создаем btn
 function createBtn() {
-  for (let i = 0; i < categories.length; i ++) {
+  for (let i = 0; i < categories.length; i++) {
     const categName = categories[i].categoryName;
     const newBtn = document.createElement('button');
     newBtn.classList.add('btn-panel__btn');
+    newBtn.id = [i + 1];
     newBtn.innerHTML = categName;
     btnPanel.appendChild(newBtn);
   }
@@ -55,11 +56,32 @@ function createBtn() {
 createBtn();
 
 
-// слушаем созданную кнопку btn
-const checkBtn = document.querySelector('.btn-panel__btn');
+// выбираем кнопку btn
+const checkBtnOne = document.getElementById(1);
+const checkBtnTwo = document.getElementById(2);
+const checkBtnThree = document.getElementById(3);
+const checkBtnFour = document.getElementById(4);
+const checkBtnFive = document.getElementById(5);
+
 // слушаем/ Нажимаем на кнопку
-checkBtn.addEventListener('click', () => {
-  filter = 'checkBtn';
+checkBtnOne.addEventListener('click', () => {
+  filter = 'checkBtnOne';
+  return filtProdId(products, filter);
+});
+checkBtnTwo.addEventListener('click', () => {
+  filter = 'checkBtnTwo';
+  return filtProdId(products, filter);
+});
+checkBtnThree.addEventListener('click', () => {
+  filter = 'checkBtnThree';
+  return filtProdId(products, filter);
+});
+checkBtnFour.addEventListener('click', () => {
+  filter = 'checkBtnFour';
+  return filtProdId(products, filter);
+});
+checkBtnFive.addEventListener('click', () => {
+  filter = 'checkBtnFive';
   return filtProdId(products, filter);
 });
 
@@ -82,27 +104,27 @@ function filtProdId(products, filter) {
   for (let i = 0; i < products.length; i++) {
     switch (products[i].categoryId) {
       case 1:
-        if (filter === 'checkBtn' && products[i].categoryId === 1){
+        if (filter === 'checkBtnOne' && products[i].categoryId === 1){
           const text = products[i].productName;
           createItem(text);
         } break;
       case 2: 
-          if (filter === 'checkBtn' && products[i].categoryId === 2) {
+          if (filter === 'checkBtnTwo' && products[i].categoryId === 2) {
           const text = products[i].productName;
           createItem(text);
         } break;
       case 3: 
-        if (filter === 'checkBtn' && products[i].categoryId === 3) {
+        if (filter === 'checkBtnThree' && products[i].categoryId === 3) {
         const text = products[i].productName;
         createItem(text);
       } break;
       case 4: 
-          if (filter === 'checkBtn' && products[i].categoryId === 4) {
+          if (filter === 'checkBtnFour' && products[i].categoryId === 4) {
           const text = products[i].productName;
           createItem(text);
         } break;
       case 5: 
-          if (filter === 'checkBtn' && products[i].categoryId === 5) {
+          if (filter === 'checkBtnFive' && products[i].categoryId === 5) {
           const text = products[i].productName;
           createItem(text);
         } break;
