@@ -35,105 +35,210 @@ const categories = [
 ];
 
 
-
-// выбираем кнопку
+//Выбираем элементы
 let filter = null;
-const wrapper = document.querySelector('.wrapper');
 const btnPanel = document.querySelector('.btn-panel');
+const wrapper = document.querySelector('.wrapper');
 
 
-// создаем btn
-function createBtn() {
-  for (let i = 0; i < categories.length; i++) {
-    const categName = categories[i].categoryName;
+//Создаем содержимое панели с кнопками
+function createBtn(){
+  for (let i = 0; i < categories.length; i++){
+    const categName = categories[i].categoryName; 
     const newBtn = document.createElement('button');
     newBtn.classList.add('btn-panel__btn');
-    newBtn.id = [i + 1];
     newBtn.innerHTML = categName;
+    newBtn.id = [i + 1];
     btnPanel.appendChild(newBtn);
   }
 }
-createBtn();
+createBtn()
 
+//создаем кнопку которую будем слушать
+const btnOne = document.getElementById(1);
+const btnTwo = document.getElementById(2);
+const btnThree = document.getElementById(3);
+const btnFour = document.getElementById(4);
+const btnFive = document.getElementById(5);
 
-// выбираем кнопку btn
-const checkBtnOne = document.getElementById(1);
-const checkBtnTwo = document.getElementById(2);
-const checkBtnThree = document.getElementById(3);
-const checkBtnFour = document.getElementById(4);
-const checkBtnFive = document.getElementById(5);
-
-
-// слушаем/ Нажимаем на кнопку
-checkBtnOne.addEventListener('click', () => {
-  filter = 'checkBtnOne';
-  return filtProdId(products, filter);
+//Слушаем кнопки
+btnOne.addEventListener('click', ()  => {
+  filter = 'btnOne';
+  return filt(products, filter);
 });
-checkBtnTwo.addEventListener('click', () => {
-  filter = 'checkBtnTwo';
-  return filtProdId(products, filter);
+btnTwo.addEventListener('click', ()  => {
+  filter = 'btnTwo';
+  return filt(products, filter);
 });
-checkBtnThree.addEventListener('click', () => {
-  filter = 'checkBtnThree';
-  return filtProdId(products, filter);
+btnThree.addEventListener('click', ()  => {
+  filter = 'btnThree';
+  return filt(products, filter);
 });
-checkBtnFour.addEventListener('click', () => {
-  filter = 'checkBtnFour';
-  return filtProdId(products, filter);
+btnFour.addEventListener('click', ()  => {
+  filter = 'btnFour';
+  return filt(products, filter);
 });
-checkBtnFive.addEventListener('click', () => {
-  filter = 'checkBtnFive';
-  return filtProdId(products, filter);
+btnFive.addEventListener('click', ()  => {
+  filter = 'btnFive';
+  return filt(products, filter);
 });
 
 
-// создаем товар
-function createItem(text) {
-  const newItem = document.createElement('div');
-  newItem.classList.add('wrapper__item');
-  newItem.innerHTML =  `
-  <div class="item"><p>${text}</p></div>`;
-  wrapper.appendChild(newItem);
-}
 
 
-// фильтруем товар
-function filtProdId(products, filter) {
+
+
+//Создаем товар, который будем фильтровать.
+
+function createItem(itemText) {
+    let item = document.createElement('div');
+    item.classList.add('wrapper__item');
+    item.innerHTML = `<p>${itemText}</p>`;
+
+    wrapper.appendChild(item);
+  }
+
+
+// Создаем фильтрацию
+function filt(products, filter) {
   while (wrapper.childElementCount > 0) {
-    wrapper.removeChild(wrapper.lastChild)
+    wrapper.removeChild(wrapper.lastChild);
   }
-  for (let i = 0; i < products.length; i++) {
-    switch (products[i].categoryId) {
+  for (i = 0; i < products.length; i++) {
+    switch(products[i].categoryId) {
       case 1:
-        if (filter === 'checkBtnOne' && products[i].categoryId === 1){
-          const text = products[i].productName;
-          createItem(text);
+        if (filter === 'btnOne' && products[i].categoryId === 1) {
+          let itemText = products[i].productName;
+          createItem(itemText);
         } break;
-      case 2: 
-          if (filter === 'checkBtnTwo' && products[i].categoryId === 2) {
-          const text = products[i].productName;
-          createItem(text);
+      case 2:
+        if (filter === 'btnTwo' && products[i].categoryId === 2) {
+          let itemText = products[i].productName;
+          createItem(itemText);
+        } break;  
+      case 3:
+        if (filter === 'btnThree' && products[i].categoryId === 3) {
+          let itemText = products[i].productName;
+          createItem(itemText);
         } break;
-      case 3: 
-        if (filter === 'checkBtnThree' && products[i].categoryId === 3) {
-        const text = products[i].productName;
-        createItem(text);
-      } break;
-      case 4: 
-          if (filter === 'checkBtnFour' && products[i].categoryId === 4) {
-          const text = products[i].productName;
-          createItem(text);
+      case 4:
+        if (filter === 'btnFour' && products[i].categoryId === 4) {
+          let itemText = products[i].productName;
+          createItem(itemText);
+        } break; 
+      case 5:
+        if (filter === 'btnFive' && products[i].categoryId === 5) {
+          let itemText = products[i].productName;
+          createItem(itemText);
         } break;
-      case 5: 
-          if (filter === 'checkBtnFive' && products[i].categoryId === 5) {
-          const text = products[i].productName;
-          createItem(text);
-        } break;
-
-    }
-  }
+  }  
 }
-filtProdId(products, filter);
+}
+filt(products, filter)
+
+
+
+
+
+
+// // выбираем кнопку
+// let filter = null;
+// const wrapper = document.querySelector('.wrapper');
+// const btnPanel = document.querySelector('.btn-panel');
+
+
+// // создаем btn
+// function createBtn() {
+//   for (let i = 0; i < categories.length; i++) {
+//     const categName = categories[i].categoryName;
+//     const newBtn = document.createElement('button');
+//     newBtn.classList.add('btn-panel__btn');
+//     newBtn.id = [i + 1];
+//     newBtn.innerHTML = categName;
+//     btnPanel.appendChild(newBtn);
+//   }
+// }
+// createBtn();
+
+
+// // выбираем кнопку btn
+// const checkBtnOne = document.getElementById(1);
+// const checkBtnTwo = document.getElementById(2);
+// const checkBtnThree = document.getElementById(3);
+// const checkBtnFour = document.getElementById(4);
+// const checkBtnFive = document.getElementById(5);
+
+
+// // слушаем/ Нажимаем на кнопку
+// checkBtnOne.addEventListener('click', () => {
+//   filter = 'checkBtnOne';
+//   return filtProdId(products, filter);
+// });
+// checkBtnTwo.addEventListener('click', () => {
+//   filter = 'checkBtnTwo';
+//   return filtProdId(products, filter);
+// });
+// checkBtnThree.addEventListener('click', () => {
+//   filter = 'checkBtnThree';
+//   return filtProdId(products, filter);
+// });
+// checkBtnFour.addEventListener('click', () => {
+//   filter = 'checkBtnFour';
+//   return filtProdId(products, filter);
+// });
+// checkBtnFive.addEventListener('click', () => {
+//   filter = 'checkBtnFive';
+//   return filtProdId(products, filter);
+// });
+
+
+// // создаем товар
+// function createItem(text) {
+//   const newItem = document.createElement('div');
+//   newItem.classList.add('wrapper__item');
+//   newItem.innerHTML =  `
+//   <div class="item"><p>${text}</p></div>`;
+//   wrapper.appendChild(newItem);
+// }
+
+
+// // фильтруем товар
+// function filtProdId(products, filter) {
+//   while (wrapper.childElementCount > 0) {
+//     wrapper.removeChild(wrapper.lastChild)
+//   }
+//   for (let i = 0; i < products.length; i++) {
+//     switch (products[i].categoryId) {
+//       case 1:
+//         if (filter === 'checkBtnOne' && products[i].categoryId === 1){
+//           const text = products[i].productName;
+//           createItem(text);
+//         } break;
+//       case 2: 
+//           if (filter === 'checkBtnTwo' && products[i].categoryId === 2) {
+//           const text = products[i].productName;
+//           createItem(text);
+//         } break;
+//       case 3: 
+//         if (filter === 'checkBtnThree' && products[i].categoryId === 3) {
+//         const text = products[i].productName;
+//         createItem(text);
+//       } break;
+//       case 4: 
+//           if (filter === 'checkBtnFour' && products[i].categoryId === 4) {
+//           const text = products[i].productName;
+//           createItem(text);
+//         } break;
+//       case 5: 
+//           if (filter === 'checkBtnFive' && products[i].categoryId === 5) {
+//           const text = products[i].productName;
+//           createItem(text);
+//         } break;
+
+//     }
+//   }
+// }
+// filtProdId(products, filter);
 
 
 
