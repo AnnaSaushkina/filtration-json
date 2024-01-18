@@ -1,119 +1,54 @@
 * {
+    box-sizing: border-box;
+    margin: 0 0;
     padding: 0 0;
-    margin: 0 auto;
-	box-sizing: border-box;
-    font-family: 'open sans', arial, sans-serif;
-    font-size: 12px;
 }
 
-img {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #000;
-    background-color: #fff;
-}
-
-p {
-	padding: 0 0;
-	margin: 0 0;
-    font-size: 12px;
-    color: #000;
-}
-
-body {
+.main {
     display: flex;
     justify-content: center;
 }
 
-.wrap {
-    background-color: #fff;
-    padding: 15px 15px;
-    border: 1px solid #000;
-    min-width: 100%;
-    max-width: 500px; 
-    min-height: 250px;
-}
-
-.field {
-    display: flex;
+.container {
+    /* min-width: 100px; */
+    width: 500px;
+    /* min-height: 200px; */
+    padding: 5px 5px;
+    background-color: #ccc;
+    display: flex; 
     flex-direction: column;
-    background-color: #ccc;
-    padding: 0px 5px 5px;
-    max-width: 500px; 
-    min-width:42%; 
+    justify-content: center; 
+    align-items: center;
 }
-@media (max-width: 540px) {
-    .field {
-        max-width: 100%;
-        margin: 0 40px 0 20px;
-    }
-  }
 
-
-.head {
+.btn-panel {
+    background-color: #8cc095;
+    width: 100%;
+    height: 30px;
     display: flex;
-    margin-left: 5px;
-    min-width: 50%;
-    max-width: 500px;
-    padding: 5px 5px 0px;
-    flex-wrap: wrap;
+    align-items: flex-end;
 }
 
-button {
-    background-color: #ccc;
-    padding: 5px 10px;
-    min-width: max-content;
+.btn-panel__btn {
+    width: 50px;
+    height: 20px;
+}
+
+.wrapper {
+    background-color: #c08c8c;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.wrapper__item {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    
+    background-color: #fff;
     border: 1px solid #000;
-    border-bottom: transparent;
-    margin: 0 12px 0 0;
-}
-@media (max-width: 600px) {
-    button {
-        margin: 7px 7px 0 0;
-        min-width: 76px;
-        border-bottom: 1px solid #000;
-    }
-  }
-
-button:hover {
-    background-color: #fff;
-    transition:  all 0.2s ease-out;
 }
 
-button:active {
-    opacity: 0.5;
-}
-
-button:focus{
-    background-color: #fff;
-}
-
-.items {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-.item {
-    width: 60px;
-    height: 60px;
-}
-
-.tShirts-color {
-    background-color: #dd0707;  
-}
-
-.tops-color {
-    background-color: #2600ff;  
-}
-
-.socks-color {
-    background-color: #0e9b1a;  
-}
-
-.jeans-color {
-    background-color: #0799dd;  
-}
-
-.trousers-color {
-    background-color: #ab07dd;  
-}
